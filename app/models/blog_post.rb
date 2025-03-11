@@ -7,7 +7,7 @@ class BlogPost < ApplicationRecord
   # version ancienne pour les requetes sql
   # scope :sorted, -> { order(Arel.sql("published_at DESC NULLS LAST").order(updated_at: :desc)) }
   # version nouvelle
-  scope :sorted, -> { order(arel_table[:published_at].desc.nulls_last).order(published_at: :desc) }
+  scope :sorted, -> { order(arel_table[:published_at].desc.nulls_last).order(updated_at: :desc) }
   scope :draft, -> { where(published_at: nil) }
   scope :published, -> { where("published_at <= ?", Time.current) }
   scope :scheduled, -> { where("published_at > ?", Time.current) }

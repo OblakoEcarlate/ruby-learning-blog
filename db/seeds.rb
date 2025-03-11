@@ -7,3 +7,8 @@
 #   ["Action", "Comedy", "Drama", "Horror"].each do |genre_name|
 #     MovieGenre.find_or_create_by!(name: genre_name)
 #   end
+
+# boucle pour créer 100 post
+# 100.times do |i|
+#   BlogPost.create title: "Post #{i + 1}", content: "hello ici"
+# end

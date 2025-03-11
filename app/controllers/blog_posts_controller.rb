@@ -1,6 +1,6 @@
 class BlogPostsController < ApplicationController
-  before_action :authenticate_user!, except: [:index, :show]
-  before_action :set_blog_post, only: [:show, :edit, :update, :destroy]
+  before_action :authenticate_user!, except: [ :index, :show ]
+  before_action :set_blog_post, only: [ :show, :edit, :update, :destroy ]
 
   def index
     @blog_posts = user_signed_in? ? BlogPost.sorted : BlogPost.published.sorted
@@ -25,7 +25,7 @@ class BlogPostsController < ApplicationController
   def create
     @blog_post = BlogPost.new(blog_post_params)
     if @blog_post.save
-      redirect_to @blog_post, notice: 'Blog post was successfully created.'
+      redirect_to @blog_post, notice: "Blog post was successfully created."
     else
       render :new, status: :unprocessable_entity
     end
@@ -36,7 +36,7 @@ class BlogPostsController < ApplicationController
 
   def update
     if @blog_post.update(blog_post_params)
-      redirect_to @blog_post, notice: 'Blog post was successfully updated.'
+      redirect_to @blog_post, notice: "Blog post was successfully updated."
     else
       render :edit, status: :unprocessable_entity
     end
@@ -44,7 +44,7 @@ class BlogPostsController < ApplicationController
 
   def destroy
     @blog_post.destroy
-    redirect_to root_path, notice: 'Blog post was successfully destroyed.'
+    redirect_to root_path, notice: "Blog post was successfully destroyed."
   end
 
   private
@@ -61,4 +61,5 @@ class BlogPostsController < ApplicationController
   def authenticate_user!
     redirect_to new_user_session_path, alert: "You need to sign in or sign up before continuing." unless user_signed_in?
   end
+
 end

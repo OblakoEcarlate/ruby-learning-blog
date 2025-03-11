@@ -1,0 +1,5 @@
+<%= link_to "Modifier", edit_blog_post_path(@blog_post) if user_signed_in? %>
+
+<h1><%= @blog_post.title %></h1>
+
+<p><%= @blog_post.content %></p>

@@ -1,0 +1,16 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+draft:
+  title: test draft
+  body: MyText
+  published_ad: nil
+
+published:
+  title: Test Published
+  body: MyText
+  published_ad: <%= 1.year.ago %>
+
+scheduled :
+  title: Test scheduled
+  body: oui c'est un post de test pour le scheduled
+  published_ad: <%= 1.year.from_now %>>
